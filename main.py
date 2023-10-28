@@ -22,29 +22,31 @@ shift = int(input("Type the shift number:\n"))
 
 #TODO-3: Call the encrypt function and pass in the user inputs. You should be able to test the code and encrypt a message. 
 def encrypt(text, shift):
-cipher_text = ""
-for position in range(len(text)):
-  letter = text[position]
-  new_position = alphabet.index(letter) + shift 
-
-  if new_position >= lenght_alphabet:
-    new_position = new_position % lenght_alphabet   
-
-  code_cipher = alphabet[new_position]
-  cipher_text += code_cipher
-print(cipher_text)
+  cipher_text = ""
+  for position in range(len(text)):
+    letter = text[position]
+    new_position = alphabet.index(letter) + shift
+    if new_position >= lenght_alphabet:
+      new_position = new_position % lenght_alphabet
+    code_cipher = alphabet[new_position]
+    cipher_text += code_cipher
+  print(cipher_text)
 
 def dencrypt(cipher_text, shift):
-text = ""
-for position in range(len(cipher_text)):
-  letter = cipher_text[position]
-  new_position = alphabet.index(letter) + shift 
-  if new_position < 0:
-    new_position = lenght_alphabet + new_position
+  text = ""
+  for position in range(len(cipher_text)):
+    letter = cipher_text[position]
+    new_position = alphabet.index(letter) - shift 
+    if new_position < 0:
+      new_position = lenght_alphabet + new_position
+    code = alphabet[new_position]
+    text += code
+  print(text)
 
-  code = alphabet[new_position]
-  text += code
-print(text)
-encrpyted_text = encrypt(text, shift)
-print("The encoded text is:", encrypted)
-dencrypted_text = dencrypt()
+
+encrypted_text = encrypt(text, shift)
+print("The encoded text is:", encrypted_text)
+
+
+dencrypted_text = dencrypt("hnanqnefynts", shift)
+print("The decode text is:", dencrypted_text)
